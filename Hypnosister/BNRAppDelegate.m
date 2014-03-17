@@ -7,13 +7,35 @@
 //
 
 #import "BNRAppDelegate.h"
+#import "BNRHypnosisView.h"
 
 @implementation BNRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+     // Create CGRects for frames
+    CGRect screenRect = self.window.bounds;
+    CGRect bigRect = screenRect;
+    bigRect.size.width *= 2.0;
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:screenRect];
+    scrollView.pagingEnabled = YES;
+    [self.window addSubview:scrollView];
+    
+    BNRHypnosisView *hypnosisView = [[BNRHypnosisView alloc] initWithFrame:screenRect];
+    [scrollView addSubview:hypnosisView];
+    
+    screenRect.origin.x += screenRect.size.width;
+    BNRHypnosisView *anotherView = [[BNRHypnosisView alloc] initWithFrame:screenRect];
+    
+    [scrollView addSubview:anotherView];
+    
+    
+    
+    scrollView.contentSize = bigRect.size;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
