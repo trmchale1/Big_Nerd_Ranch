@@ -1,5 +1,5 @@
 //
-//  BNRHypnosisViewController.h
+//  BNRReminderViewController.h
 //  Hypnosister
 //
 //  Created by Tim McHale on 3/17/14.
@@ -8,6 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BNRHypnosisViewController : UIViewController
-
+@interface BNRReminderViewController : UIViewController
 @end

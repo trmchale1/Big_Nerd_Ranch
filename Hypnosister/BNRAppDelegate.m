@@ -7,7 +7,9 @@
 //
 
 #import "BNRAppDelegate.h"
+#import "BNRHypnosisViewController.h"
 #import "BNRHypnosisView.h"
+#import "BNRReminderViewController.h"
 
 @implementation BNRAppDelegate
 
@@ -15,18 +17,34 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-     // Create CGRects for frames
+//    Currently not doing anything or creating bugs
+    //  Blocking useless code
+//    BNRHypnosisViewController *hvc = [[BNRHypnosisViewController alloc] init];
+    
+    NSBundle *appBundle = [NSBundle mainBundle];
+    
+    BNRReminderViewController *rvc = [[BNRReminderViewController alloc] initWithNibName:@"BNRReminderViewController" bundle:appBundle];
+
+    //  Currently a useless piece of code,
+    //  However currently getting a "Application windows are expected to have a root view controller at the end of application launch" message
+
+    
+//    self.window.rootViewController = rvc;
+    
+    
+    // Create CGRects for frames
     CGRect screenRect = self.window.bounds;
     CGRect bigRect = screenRect;
     bigRect.size.width *= 2.0;
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:screenRect];
     scrollView.pagingEnabled = YES;
+    
     [self.window addSubview:scrollView];
     
     BNRHypnosisView *hypnosisView = [[BNRHypnosisView alloc] initWithFrame:screenRect];
-    [scrollView addSubview:hypnosisView];
-    
+   [scrollView addSubview:hypnosisView];
+
     screenRect.origin.x += screenRect.size.width;
     BNRHypnosisView *anotherView = [[BNRHypnosisView alloc] initWithFrame:screenRect];
     
